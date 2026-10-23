@@ -1,0 +1,582 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nazwa Luna Alifia | My Little Space ♡</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    :root {
+      --bg: #f7f6f2;
+      --white: #ffffff;
+      --text: #262622;
+      --muted: #77776f;
+      --line: #e5e3dc;
+      --accent: #8b8a78;
+    }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    button, a {
+      font: inherit;
+    }
+    button {
+      cursor: pointer;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    /* NAVBAR */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 22px 8%;
+      background: rgba(247,246,242,.94);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(12px);
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 23px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+    .nav-links button {
+      border: none;
+      background: transparent;
+      padding: 8px 13px;
+      color: var(--muted);
+      border-radius: 5px;
+      transition: .25s;
+    }
+    .nav-links button:hover,
+    .nav-links button.active {
+      background: #e9e7df;
+      color: var(--text);
+    }
+    /* HALAMAN */
+    main {
+      max-width: 1100px;
+      width: 84%;
+      margin: auto;
+      min-height: 76vh;
+    }
+    .page {
+      display: none;
+      padding: 75px 0;
+      animation: fade .45s ease;
+    }
+    .page.active {
+      display: block;
+    }
+    @keyframes fade {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+    h1 {
+      font-size: clamp(40px, 5.5vw, 67px);
+      margin: 17px 0;
+    }
+    h2 {
+      font-size: clamp(30px, 4vw, 42px);
+      margin-bottom: 15px;
+    }
+    p {
+      color: var(--muted);
+    }
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    /* HOME */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 65px;
+      align-items: center;
+      min-height: 570px;
+    }
+    .hero p {
+      max-width: 500px;
+      margin-bottom: 26px;
+    }
+    .hero-photo {
+      width: 100%;
+      max-width: 360px;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      display: block;
+      margin: auto;
+      border-radius: 4px;
+      background: #e4e1d8;
+    }
+    .photo-frame {
+      position: relative;
+    }
+    .photo-frame::after {
+      content: "";
+      position: absolute;
+      inset: 15px -15px -15px 15px;
+      border: 1px solid #c8c4b8;
+      z-index: -1;
+    }
+    .button {
+      display: inline-block;
+      padding: 12px 23px;
+      border: 1px solid var(--text);
+      background: var(--text);
+      color: white;
+      border-radius: 3px;
+      transition: .25s;
+      margin: 4px 5px 4px 0;
+    }
+    .button:hover {
+      background: transparent;
+      color: var(--text);
+      transform: translateY(-2px);
+    }
+    .button.outline {
+      color: var(--text);
+      background: transparent;
+    }
+    .button.outline:hover {
+      background: var(--text);
+      color: white;
+    }
+    /* JUDUL SECTION */
+    .section-head {
+      margin-bottom: 35px;
+    }
+    .section-head p {
+      margin-top: 10px;
+    }
+    /* ABOUT */
+    .about-layout {
+      display: grid;
+      grid-template-columns: .75fr 1.25fr;
+      gap: 45px;
+      align-items: start;
+    }
+    .about-photo {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      background: #e4e1d8;
+    }
+    .about-text p {
+      margin: 15px 0;
+    }
+    .info {
+      border-top: 1px solid var(--line);
+      margin-top: 22px;
+    }
+    .info div {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 12px;
+    }
+    .info strong {
+      font-size: 14px;
+    }
+    .info span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    /* KARTU PROFIL */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .card {
+      padding: 25px;
+      border: 1px solid var(--line);
+      background: var(--white);
+      transition: .25s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: #bcb9ab;
+    }
+    .card h3 {
+      font-size: 17px;
+      margin-bottom: 10px;
+    }
+    .card p {
+      font-size: 14px;
+    }
+    .skill {
+      margin-top: 20px;
+    }
+    .skill-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+    .bar {
+      height: 5px;
+      background: #eae8e1;
+    }
+    .progress {
+      height: 100%;
+      background: #77786b;
+    }
+    /* PROYEK */
+    .project {
+      cursor: pointer;
+      text-align: left;
+      color: var(--text);
+      width: 100%;
+      font: inherit;
+    }
+    .project-number {
+      color: var(--accent);
+      font-size: 12px;
+      letter-spacing: 2px;
+      margin-bottom: 22px;
+    }
+    .project h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 23px;
+    }
+    .project-detail {
+      display: none;
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+    .project.open .project-detail {
+      display: block;
+    }
+    .project-hint {
+      display: inline-block;
+      margin-top: 17px;
+      font-size: 12px;
+      color: var(--accent);
+    }
+    /* CONTACT */
+    .contact {
+      max-width: 650px;
+      margin: 35px auto;
+      text-align: center;
+    }
+    .contact p {
+      margin: 15px auto;
+    }
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 25px;
+    }
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 25px 8%;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    @media (max-width: 760px) {
+      nav {
+        flex-direction: column;
+        padding: 16px 4%;
+      }
+      .nav-links {
+        justify-content: center;
+      }
+      .nav-links button {
+        padding: 7px 9px;
+        font-size: 13px;
+      }
+      main {
+        width: 88%;
+      }
+      .page {
+        padding: 45px 0;
+      }
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        padding: 10px 0;
+      }
+      .hero-text {
+        order: 2;
+      }
+      .hero-photo {
+        max-width: 270px;
+      }
+      .photo-frame {
+        max-width: 270px;
+        margin: auto;
+      }
+      .about-layout {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+      .about-photo {
+        max-width: 300px;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      footer {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#" class="logo" onclick="showPage('home'); return false;">
+      Nazwa Luna Alifia.
+    </a>
+    <div class="nav-links">
+      <button class="active" onclick="showPage('home')">Home</button>
+      <button onclick="showPage('profil')">Profil</button>
+      <button onclick="showPage('about')">About</button>
+      <button onclick="showPage('gallery')">Gallery</button>
+      <button onclick="showPage('contact')">Contact</button>
+    </div>
+  </nav>
+  <main>
+    <!-- HOME -->
+    <section id="home" class="page active">
+      <div class="hero">
+        <div class="hero-text">
+          <span class="eyebrow">Welcome to My Little Space</span>
+          <h1>Hai, aku<br>Nazwa!</h1>
+          <p>
+            Welcome to my little corner of the internet! Di sini kamu bisa
+            kenal aku lebih dekat, lihat foto-fotoku, dan intip hal-hal
+            yang aku suka. Yuk, jalan-jalan di website-ku!
+          </p>
+          <button class="button" onclick="showPage('profil')">
+            Kenalan Yuk! →
+          </button>
+          <button class="button outline"
+            onclick="showPage('gallery')">
+            Intip Gallery
+          </button>
+        </div>
+        <div class="photo-frame">
+          <img class="hero-photo"
+            src="foto/myfoto.jpeg"
+            alt="Foto Nazwa"
+            onerror="this.onerror=null; this.src='https://placehold.co/500x625/e5e2d9/55554d?text=Masukkan+Foto+Kamu';">
+        </div>
+      </div>
+    </section>
+    <!-- ABOUT -->
+    <section id="about" class="page">
+      <div class="section-head">
+        <span class="eyebrow">About Me</span>
+        <h2>About Me, alias Aku Banget!</h2>
+        <p>Yuk kenalan sama aku, dari hobi sampai hal-hal random yang aku suka.</p>
+      </div>
+      <div class="about-layout">
+        <img class="about-photo"
+          src="foto/myfoto.jpeg"
+          alt="Foto profil"
+          onerror="this.onerror=null; this.src='https://placehold.co/400x530/e5e2d9/55554d?text=Foto+Profil';">
+        <div class="about-text">
+          <h2>Jadi, Ini Aku! ✨</h2>
+          <p>Hai, aku Nazwa Luna Alifia! Aku seorang pelajar yang suka belajar hal baru, mencoba hal-hal seru, dan menuangkan ide kreatif. Masih banyak yang pengin aku pelajari, jadi perjalanan ini baru mulai!</p>
+          <p>Buat aku, nggak harus langsung jago buat mulai sesuatu. Yang penting berani mencoba, menikmati prosesnya, dan terus berkembang sedikit demi sedikit. Website ini jadi tempat kecil buat berbagi cerita tentang aku dan hal-hal yang aku suka. Makasih udah mampir, ya! 💗</p>
+          
+<div class="info">
+  <div><strong>Nama</strong><span>Nazwa Luna Alifia</span></div>
+  <div><strong>Status</strong><span>Pelajar</span></div>
+  <div><strong>Hobi</strong><span>Watching movies </span></div>
+  <div><strong>Organisasi</strong><span>Aktif di HIMA FKOM </span></div>
+  <div><strong>Domisili</strong><span>Kabupaten Sumedang</span></div>
+</div>
+
+          <button class="button" style="margin-top:25px"
+            onclick="showPage('profil')">
+            Intip Profilku →
+          </button>
+        </div>
+      </div>
+    </section>
+    <!-- PROFIL -->
+    <section id="profil" class="page">
+      <div class="section-head">
+        <span class="eyebrow">A Little About Me</span>
+        <h2>Kenalan Lebih Dekat!</h2>
+        <p>Beberapa hal kecil tentang aku. Semoga kita punya kesukaan yang sama!</p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <h3>01. My Personality ✨</h3>
+          <p>Aku suka mencoba hal baru, penasaran sama banyak hal, dan pelan-pelan terus belajar jadi versi terbaik diriku.</p>
+        </div>
+        <div class="card">
+          <h3>02. My Hobbies 🍿</h3>
+          <p>Salah satu hal yang aku suka adalah nonton film. Paling seru kalau ceritanya bikin penasaran atau susah dilupain!</p>
+        </div>
+        <div class="card">
+          <h3>03. My Little Goals 🌱</h3>
+          <p>Aku pengin terus belajar, nambah pengalaman, dan bikin karya yang suatu hari nanti bisa aku banggakan.</p>
+        </div>
+        
+<div class="card">
+  <h3>04. My Organization 🤝</h3>
+  <p>
+    Aku juga aktif di HIMA FKOM! Buat aku, ikut organisasi jadi
+    kesempatan buat nambah pengalaman, belajar kerja sama,
+    kenal teman-teman baru, dan berkembang bareng.</p>
+        </div>
+      </div>
+      <button class="button" style="margin-top:25px" onclick="showPage('about')">
+        Cerita Tentang Aku →
+      </button>
+    </section>
+    <!-- GALLERY -->
+    <section id="gallery" class="page">
+      <div class="section-head">
+        <span class="eyebrow">My Gallery</span>
+        <h2>Galeri Ceritaku 📸</h2>
+        <p>Kumpulan foto, momen, dan hal-hal yang punya cerita tersendiri buat aku.</p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <img src="foto/Foto1.jpeg" alt="Momen favorit Nazwa" style="width:100%;height:240px;object-fit:cover;border-radius:5px" onerror="this.style.display='none'">
+          <h3 style="margin-top:15px">Little Moments ✨</h3>
+          <p>Momen sederhana yang ternyata punya tempat spesial di ingatan.</p>
+        </div>
+        <div class="card">
+          <img src="foto/Foto2.jpeg" alt="Hal yang disukai Nazwa" style="width:100%;height:240px;object-fit:cover;border-radius:5px" onerror="this.style.display='none'">
+          <h3 style="margin-top:15px">My Favorite Things 💗</h3>
+          <p>Hal-hal kecil yang bikin hari-hariku terasa lebih menyenangkan.</p>
+        </div>
+        <div class="card">
+          <img src="foto/Foto3.jpeg" alt="Kenangan Nazwa" style="width:100%;height:240px;object-fit:cover;border-radius:5px" onerror="this.style.display='none'">
+          <h3 style="margin-top:15px">Sweet Memories 🌷</h3>
+          <p>Kenangan yang pengin aku simpan baik-baik.</p>
+        </div>
+      </div>
+      <button class="button" style="margin-top:25px" onclick="showPage('contact')">
+        Say Hi! →
+      </button>
+    </section>
+    <!-- CONTACT -->
+    <section id="contact" class="page">
+      <div class="contact">
+        <span class="eyebrow">Get In Touch</span>
+        <h2>Yuk, Say Hi! 💌</h2>
+        <p>
+          Yeay, kamu udah sampai di sini! Makasih banget udah mampir ke website-ku. 💗
+          Kalau mau ngobrol, kenalan, atau sekadar say hi, kontak aku di bawah, ya!
+        </p>
+        <div class="card" style="margin-top:30px">
+          <h3>Find Me Here ✨</h3>
+          <p>Jangan malu buat nyapa, ya. Aku tunggu!</p>
+          <p id="email-text">nazwalunaalifia333@gmail.com</p>
+          <div class="contact-links">
+            <button class="button" onclick="copyEmail()">
+              Copy Email 📋
+            </button>
+            <a class="button outline"
+              href="https://www.instagram.com/nnzw.luna?psln=MWdrcjk0cWZvNHByYQ=="
+              target="_blank" rel="noopener">
+              Instagram ↗
+            </a>
+          </div>
+          <p id="copy-status" style="font-size:13px"></p>
+        </div>
+        <button class="button" style="margin-top:25px"
+          onclick="showPage('home')">
+          ← Balik ke Home
+        </button>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <span>© 2026 Nazwa</span>
+    <span>Made with ♡ and a little bit of Nazwa</span>
+  </footer>
+  <script>
+    // Navigasi antarhalaman
+    function showPage(pageId) {
+      document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+      });
+      document.getElementById(pageId).classList.add('active');
+      document.querySelectorAll('.nav-links button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      const buttons = document.querySelectorAll('.nav-links button');
+      buttons.forEach(btn => {
+        if (btn.textContent.trim().toLowerCase() === pageId) {
+          btn.classList.add('active');
+        }
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    // Buka dan tutup detail jika diperlukan
+    function toggleProject(card) {
+      card.classList.toggle('open');
+      const hint = card.querySelector('.project-hint');
+      if (card.classList.contains('open')) {
+        hint.textContent = 'Tutup detail −';
+      } else {
+        hint.textContent = 'Lihat detail +';
+      }
+    }
+    // Salin email
+    async function copyEmail() {
+      const email = document.getElementById('email-text').textContent.trim();
+      const status = document.getElementById('copy-status');
+      try {
+        await navigator.clipboard.writeText(email);
+        status.textContent = 'Yeay! Email berhasil disalin 📋';
+      } catch (error) {
+        status.textContent = 'Belum bisa disalin otomatis. Kamu bisa salin email ini: ' + email;
+      }
+    }
+  </script>
+</body>
+</html>
